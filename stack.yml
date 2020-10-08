@@ -1,0 +1,120 @@
+version: "3.1"
+services:
+  lab1:
+    image: nextgenhealthcare/connect
+    environment:
+      - DATABASE=postgres
+      - DATABASE_URL=jdbc:postgresql://db:5432/lab1
+      - DATABASE_MAX_CONNECTIONS=20
+      - DATABASE_USERNAME=mirthdb
+      - DATABASE_PASSWORD=mirthdb
+      - KEYSTORE_STOREPASS=docker_storepass
+      - KEYSTORE_KEYPASS=docker_keypass
+      - VMOPTIONS=-Xmx512m
+    ports:
+      - 180:8080/tcp
+      - 181:8081/tcp
+      - 143:8443/tcp
+    depends_on:
+      - db
+    volumes:
+      - /Users/hwri/projects/cheap-routing/senders/lab1:/opt/connect/in_out
+      - /Users/hwri/projects/cheap-routing/custom-lib:/opt/connect/custom-lib
+      - /Users/hwri/projects/cheap-routing/cheap-directory:/opt/connect/cheap-directory
+
+  lab2:
+    image: nextgenhealthcare/connect
+    environment:
+      - DATABASE=postgres
+      - DATABASE_URL=jdbc:postgresql://db:5432/lab2
+      - DATABASE_MAX_CONNECTIONS=20
+      - DATABASE_USERNAME=mirthdb
+      - DATABASE_PASSWORD=mirthdb
+      - KEYSTORE_STOREPASS=docker_storepass
+      - KEYSTORE_KEYPASS=docker_keypass
+      - VMOPTIONS=-Xmx512m
+    ports:
+      - 280:8080/tcp
+      - 281:8081/tcp
+      - 243:8443/tcp
+    depends_on:
+      - db
+    volumes:
+      - /Users/hwri/projects/cheap-routing/senders/lab2:/opt/connect/in_out
+      - /Users/hwri/projects/cheap-routing/custom-lib:/opt/connect/custom-lib
+      - /Users/hwri/projects/cheap-routing/cheap-directory:/opt/connect/cheap-directory
+
+  phd1:
+    image: nextgenhealthcare/connect
+    environment:
+      - DATABASE=postgres
+      - DATABASE_URL=jdbc:postgresql://db:5432/phd1
+      - DATABASE_MAX_CONNECTIONS=20
+      - DATABASE_USERNAME=mirthdb
+      - DATABASE_PASSWORD=mirthdb
+      - KEYSTORE_STOREPASS=docker_storepass
+      - KEYSTORE_KEYPASS=docker_keypass
+      - VMOPTIONS=-Xmx512m
+    ports:
+      - 1180:8080/tcp
+      - 1181:8081/tcp
+      - 1143:8443/tcp
+    depends_on:
+      - db
+    volumes:
+      - /Users/hwri/projects/cheap-routing/receivers/phd1:/opt/connect/in_out
+      - /Users/hwri/projects/cheap-routing/custom-lib:/opt/connect/custom-lib
+      - /Users/hwri/projects/cheap-routing/cheap-directory:/opt/connect/cheap-directory
+
+  phd2:
+    image: nextgenhealthcare/connect
+    environment:
+      - DATABASE=postgres
+      - DATABASE_URL=jdbc:postgresql://db:5432/phd2
+      - DATABASE_MAX_CONNECTIONS=20
+      - DATABASE_USERNAME=mirthdb
+      - DATABASE_PASSWORD=mirthdb
+      - KEYSTORE_STOREPASS=docker_storepass
+      - KEYSTORE_KEYPASS=docker_keypass
+      - VMOPTIONS=-Xmx512m
+    ports:
+      - 1280:8080/tcp
+      - 1281:8081/tcp
+      - 1243:8443/tcp
+    depends_on:
+      - db
+    volumes:
+      - /Users/hwri/projects/cheap-routing/receivers/phd2:/opt/connect/in_out
+      - /Users/hwri/projects/cheap-routing/custom-lib:/opt/connect/custom-lib
+      - /Users/hwri/projects/cheap-routing/cheap-directory:/opt/connect/cheap-directory
+
+  fed1:
+    image: nextgenhealthcare/connect
+    environment:
+      - DATABASE=postgres
+      - DATABASE_URL=jdbc:postgresql://db:5432/fed1
+      - DATABASE_MAX_CONNECTIONS=20
+      - DATABASE_USERNAME=mirthdb
+      - DATABASE_PASSWORD=mirthdb
+      - KEYSTORE_STOREPASS=docker_storepass
+      - KEYSTORE_KEYPASS=docker_keypass
+      - VMOPTIONS=-Xmx512m
+    ports:
+      - 1380:8080/tcp
+      - 1381:8081/tcp
+      - 1343:8443/tcp
+    depends_on:
+      - db
+    volumes:
+      - /Users/hwri/projects/cheap-routing/receivers/fed1:/opt/connect/in_out
+      - /Users/hwri/projects/cheap-routing/custom-lib:/opt/connect/custom-lib
+      - /Users/hwri/projects/cheap-routing/cheap-directory:/opt/connect/cheap-directory
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=mirthdb
+      - POSTGRES_PASSWORD=mirthdb
+      - POSTGRES_DB=mirthdb
+    ports:
+      - 5435:5432/tcp

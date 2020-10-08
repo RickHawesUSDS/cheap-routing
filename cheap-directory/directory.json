@@ -1,0 +1,33 @@
+{
+  "senders": [
+    {
+      "name": "lab1",
+      "description":"Fake lab 1" 
+    },
+    {
+      "name": "lab2",
+      "description": "Fake lab 2"
+    }
+  ],
+
+  "receivers": [
+    {
+      "name": "phd1",
+      "description": "AZ PHD",
+      "address": "phd1",
+      "topics": [{"observation": "covid-19:*", "state":"AZ", "deidentify":false, "format":"csv"}]
+    },
+    {
+      "name": "phd2",
+      "description": "FL PHD",
+      "address": "phd2",
+      "topics": [{"observation": "covid-19:pos", "state":"FL", "deidentify":false, "format":"csv"}]
+    },
+    {
+      "name": "fed1",
+      "description": "Federal",
+      "address": "fed1",
+      "topics": [{"observation": "covid-19:pos", "state":".*", "deidentify":false, "format":"csv"}]
+    }
+  ]
+}
