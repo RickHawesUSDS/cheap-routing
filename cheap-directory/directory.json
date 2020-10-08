@@ -22,6 +22,12 @@
       "description": "FL PHD",
       "address": "phd2",
       "topics": [{"observation": "covid-19:pos", "state":"FL", "deidentify":false, "format":"csv"}]
+    },
+    {
+      "name": "fed1",
+      "description": "Federal",
+      "address": "phd2",
+      "topics": [{"observation": "covid-19:pos", "state":"*", "deidentify":true, "format":"csv"}]
     }
   ]
 }
