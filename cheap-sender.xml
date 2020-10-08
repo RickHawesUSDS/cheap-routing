@@ -3,7 +3,7 @@
   <name>cheap-sender</name>
   <revision>1</revision>
   <lastModified>
-    <time>1602122262529</time>
+    <time>1602123765669</time>
     <timezone>Etc/UTC</timezone>
   </lastModified>
   <description></description>
@@ -13,7 +13,7 @@
       <nextMetaDataId>2</nextMetaDataId>
       <name>send</name>
       <description></description>
-      <revision>2</revision>
+      <revision>28</revision>
       <sourceConnector version="3.9.1">
         <metaDataId>0</metaDataId>
         <name>sourceConnector</name>
@@ -267,7 +267,7 @@ return;</undeployScript>
       <nextMetaDataId>2</nextMetaDataId>
       <name>route</name>
       <description></description>
-      <revision>2</revision>
+      <revision>45</revision>
       <sourceConnector version="3.9.1">
         <metaDataId>0</metaDataId>
         <name>sourceConnector</name>
@@ -437,8 +437,8 @@ for (var i = 1; i &lt; rows.length(); i++) {
 		// logger.info(&apos;row: &apos; + row.column7 + &apos;, topic: &apos; + rec.topic.observation + &apos;, matchObservation: &apos; + matchObservation);
 		if (matchState &amp;&amp; matchObservation) {
 			rec.result +=  row.column1 + &apos;,&apos; + 
-						row.column2 + &apos;,&apos; +
-						row.column3 + &apos;,&apos; +
+						(rec.topic.deidentify ? &apos;&apos; : row.column2) + &apos;,&apos; +
+						(rec.topic.deidentify ? &apos;&apos; : row.column3) + &apos;,&apos; +
 						row.column4 + &apos;,&apos; +
 						row.column5 + &apos;,&apos; +
 						row.column6 + &apos;,&apos; +
@@ -547,7 +547,7 @@ return;</undeployScript>
         <metadata>
           <enabled>true</enabled>
           <lastModified>
-            <time>1602123189760</time>
+            <time>1602124467840</time>
             <timezone>America/Los_Angeles</timezone>
           </lastModified>
           <pruningSettings>
