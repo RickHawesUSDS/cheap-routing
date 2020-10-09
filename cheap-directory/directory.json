@@ -27,7 +27,7 @@
       "name": "fed1",
       "description": "Federal",
       "address": "phd2",
-      "topics": [{"observation": "covid-19:pos", "state":"*", "deidentify":true, "format":"csv"}]
+      "topics": [{"observation": "covid-19:pos", "state":".*", "deidentify":true, "format":"csv"}]
     }
   ]
 }
